@@ -1,4 +1,4 @@
-import robin_stocks as rh
+import robin_stocks.robinhood as rh
 
 
 class robin_connection:
@@ -14,10 +14,13 @@ class robin_connection:
 
     def robin_login(self, otc):
         self.robinhood_OTC = otc
-        login = rh.robinhood.login(self.robinhood_username, self.robinhood_passcode, self.robinhood_OTC)
+        login = rh.login(self.robinhood_username, self.robinhood_passcode, self.robinhood_OTC)
 
     def see_full_profile(self):
-        return rh.robinhood.profiles.load_account_profile()
+        return rh.profiles.load_account_profile()
 
     def see_simple_profile(self):
-        return rh.robinhood.profiles.load_basic_profile()
+        return rh.profiles.load_basic_profile()
+
+    def see_a_stock(self, stock_name):
+        return rh.stocks.find_instrument_data(stock_name)
