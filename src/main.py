@@ -1,8 +1,8 @@
-import robin_stocks as rh
-
-
-
+import robin_connection as rc
 class main:
-    def __init__(self):
-        self.steve_robinhood_username = 'steveju546@gmail.com'
-        self.steve_robinhood_passcode = ''
+    steve_rc = rc.robin_connection('Steve')
+    steve_rc.robin_login('636396')
+    profile = steve_rc.see_full_profile()
+    print(profile)
+    profile = steve_rc.see_simple_profile()
+    print(profile)
