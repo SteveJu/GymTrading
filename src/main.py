@@ -3,4 +3,5 @@ import math
 
 class main:
     def __init__(self):
-        self.name = "SteveJu"
+        self.steve_robinhood_username = 'steveju546@gmail.com'
+        self.steve_robinhood_passcode = ''
