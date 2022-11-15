@@ -2,17 +2,12 @@ import robin_connection as rc
 
 
 class main:
-    try:
-        steve_rc = rc.robin_connection('Steve')
-        steve_rc.robin_login('636396')
-        print('Steve has logged in.')
-    except:
-        print('Login failed')
-        print(Exception)
+    steve_rc = rc.robin_connection('Steve')
+    steve_rc.robin_login('636396')
 
-    profile = steve_rc.see_full_profile()
+    full_profile = steve_rc.see_full_profile()
     # print(profile)
-    profile = steve_rc.see_simple_profile()
+    simple_profile = steve_rc.see_simple_profile()
     # print(profile)
     stock = steve_rc.see_a_stock('AAPL')
     for item in stock:
