@@ -14,5 +14,7 @@ class main:
     # print(profile)
     profile = steve_rc.see_simple_profile()
     # print(profile)
-    stock = steve_rc.see_a_stock('GOOG')
-    print(stock)
+    stock = steve_rc.see_a_stock('AAPL')
+    for item in stock:
+        for k, v in item.items():
+            print(k, ':', v)
