@@ -23,7 +23,15 @@ class robin_connection:
         return rh.profiles.load_basic_profile()
 
     def see_a_stock(self, stock_name):
-        return rh.stocks.find_instrument_data(stock_name)
+        target = rh.stocks.get_latest_price(stock_name)
+        print('Price Now: ', target[0])
+        return target
 
-    def see_an_option(self):
-        return rh.options.find_options_by_expiration_and_strike('TSLA', '2022-12-02', '149', 'put')
+    def see_an_option(self, option_name, ex_date, strike, type):
+        target = rh.options.find_options_by_expiration_and_strike(option_name, ex_date, strike, type)
+        for item in target:
+            print('ask_price: ', item['ask_price'])
+            print('bid_price: ', item['bid_price'])
+            print('gamma: ', item['gamma'])
+            print('implied_volatility: ', item['implied_volatility'])
+        return
