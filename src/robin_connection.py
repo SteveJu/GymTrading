@@ -24,3 +24,6 @@ class robin_connection:
 
     def see_a_stock(self, stock_name):
         return rh.stocks.find_instrument_data(stock_name)
+
+    def see_an_option(self):
+        return rh.options.find_options_by_expiration_and_strike('TSLA', '2022-12-02', '149', 'put')
