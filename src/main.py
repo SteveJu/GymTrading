@@ -1,21 +1,29 @@
 import robin_connection as rc
+import openbb_connection as oc
 import time
 from datetime import datetime
 
 
 class main:
+
     def go(Name):
         steve_rc = rc.robin_connection(Name)
         steve_rc.robin_login('')
-        stock_name = 'GM'
+
         now = datetime.now()
         current_time = now.strftime('%H')
 
-        while int(current_time) < 15:
+        steve_oc = oc.openbb_connection()
+        stock_names, exps, strikes, types = steve_oc.getUnu(30)
+
+        while int(current_time) < 16:
             now = datetime.now()
             print("Current Time =", now.strftime('%H:%M:%S'))
-            price = steve_rc.see_a_stock(stock_name)
-            steve_rc.see_an_option(stock_name, '2023-03-17', '18', 'put')
+            for i in range(len(stock_names)):
+                print('********************************************************')
+                print(stock_names[i], exps[i], strikes[i], types[i])
+                price = steve_rc.see_a_stock(stock_names[i])
+                steve_rc.see_an_option(stock_names[i], exps[i], strikes[i], types[i])
             time.sleep(30)
             print('-----------------------------------------------------------------')
 
