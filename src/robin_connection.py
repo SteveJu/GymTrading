@@ -31,6 +31,10 @@ class robin_connection:
     def robin_login(self):
         login = rh.login(self.robinhood_username, self.robinhood_passcode, self.robinhood_OTC)
 
+    def robin_logout(self):
+        print('Logging out..........')
+        rh.logout()
+
     def see_a_stock(self, stock_names):
         target = rh.stocks.get_latest_price(stock_names)
         return target
