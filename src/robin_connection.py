@@ -1,6 +1,7 @@
 import robin_stocks.robinhood as rh
 import login
 
+
 class robin_connection:
     def __init__(self):
         username, password, OTC = login.tkLogin()
@@ -9,7 +10,7 @@ class robin_connection:
         self.robinhood_OTC = OTC.get()
 
     def robin_login(self, time):
-        login = rh.login(self.robinhood_username, self.robinhood_passcode, self.robinhood_OTC)
+        rh.login(self.robinhood_username, self.robinhood_passcode, self.robinhood_OTC)
         print('Logged in at', time)
 
     def robin_logout(self, time):
