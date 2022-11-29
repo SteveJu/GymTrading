@@ -12,7 +12,6 @@ class robin_connection:
 
         Label(tk_window, text="Enter Username:").grid(row=0, column=0)
         username = StringVar()
-        username.set('steveju546@gmail.com')
         Entry(tk_window, textvariable=username).grid(row=0, column=1)
         Label(tk_window, text="Enter Password:").grid(row=1, column=0)
         password = StringVar()
