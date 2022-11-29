@@ -9,7 +9,7 @@ class models:
     def __init__(self):
         pass
 
-    def jump_diffusion(S=1, X=0.5, T=1, mu=0.12, sigma=0.3, Lambda=0.25,
+    def jump_diffusion(self, S=1, X=0.5, T=1, mu=0.12, sigma=0.3, Lambda=0.25,
                        a=0.2, b=0.2, Nsteps=252, Nsim=100, alpha=0.05, seed=None):
         '''
         Monte Carlo simulation [1] of Merton's Jump Diffusion Model [2].
@@ -187,5 +187,7 @@ class models:
         elapsed_time = toc - tic
         print('Total running time: {:.2f} ms'.format(elapsed_time * 1000))
 
-    if __name__ == '__main__':
-        jump_diffusion()
+
+if __name__ == '__main__':
+    test = models()
+    test.jump_diffusion()

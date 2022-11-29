@@ -18,7 +18,7 @@ class main:
 
         steve_rc.robin_login(now.strftime('%H:%M:%S'))
 
-        while int(current_time) < 20:
+        while int(current_time) < 24:
             now = datetime.now()
             current_time = now.strftime('%H')
             print("Current Time =", now.strftime('%H:%M:%S'))
@@ -32,10 +32,10 @@ class main:
                     print(stock_names[i], exps[i], strikes[i], types[i])
                     print('Price now: ', prices[i])
                     opt_info = steve_rc.see_an_option(stock_names[i], exps[i], strikes[i], types[i])
-                    print('ask_price: ', opt_info[0])
-                    print('bid_price: ', opt_info[1])
+                    print('ask price: ', opt_info[0])
+                    print('bid price: ', opt_info[1])
                     print('gamma: ', opt_info[2])
-                    print('implied_volatility: ', opt_info[3])
+                    print('implied volatility: ', opt_info[3])
                 print('-----------------------------------------------------------------')
             time.sleep(30)
         now = datetime.now()
