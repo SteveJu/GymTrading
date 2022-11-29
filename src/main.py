@@ -13,10 +13,10 @@ class main:
         steve_rc = rc.robin_connection()
         steve_oc = oc.openbb_connection()
 
-        steve_rc.robin_login()
-
         now = datetime.now()
         current_time = now.strftime('%H')
+
+        steve_rc.robin_login(now.strftime('%H:%M:%S'))
 
         while int(current_time) < 19:
             now = datetime.now()
@@ -34,5 +34,5 @@ class main:
                     steve_rc.see_an_option(stock_names[i], exps[i], strikes[i], types[i])
                 print('-----------------------------------------------------------------')
             time.sleep(30)
-
-        steve_rc.robin_logout()
+        now = datetime.now()
+        steve_rc.robin_logout(now.strftime('%H:%M:%S'))
