@@ -11,7 +11,6 @@ class main:
     if __name__ == '__main__':
         threshold = 40
         steve_rc = rc.robin_connection()
-        steve_oc = oc.openbb_connection()
 
         now = datetime.now()
         current_time = now.strftime('%H')
@@ -22,7 +21,7 @@ class main:
             now = datetime.now()
             current_time = now.strftime('%H')
             print("Current Time =", now.strftime('%H:%M:%S'))
-            stock_names, exps, strikes, types = steve_oc.getUnu(threshold)
+            stock_names, exps, strikes, types = oc.getUnu(threshold)
             prices = steve_rc.see_a_stock(stock_names)
             if len(stock_names) == 0:
                 print('No unusual options for now, will check 30 seconds later.')
