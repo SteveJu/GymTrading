@@ -1,5 +1,6 @@
 from openbb_terminal.sdk import openbb
 
+
 def getUnu(threshold):
     unu_df = openbb.stocks.options.unu()
     unu_df = unu_df[0]
@@ -16,4 +17,3 @@ def getUnu(threshold):
         else:
             break
     return tickers, exps, strikes, types
-

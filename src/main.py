@@ -9,23 +9,32 @@ class main:
         pass
 
     if __name__ == '__main__':
-        threshold = 40
+        threshold = 30
         steve_rc = rc.robin_connection()
 
         now = datetime.now()
-        current_time = now.strftime('%H')
+        current_hour = int(now.strftime('%H'))
 
         steve_rc.robin_login(now.strftime('%H:%M:%S'))
 
-        while int(current_time) < 24:
-            now = datetime.now()
-            current_time = now.strftime('%H')
-            print("Current Time =", now.strftime('%H:%M:%S'))
+        try:
             stock_names, exps, strikes, types = oc.getUnu(threshold)
-            prices = steve_rc.see_a_stock(stock_names)
+        except:
+            stock_names, exps, strikes, types = [], [], [], []
+
+        while current_hour < 24:
+            now = datetime.now()
+            current_hour = int(now.strftime('%H'))
+            current_min = int(now.strftime('%M'))
+            print("Current Time =", now.strftime('%H:%M:%S'))
+            if current_min % 30 == 0:
+                stock_names, exps, strikes, types = oc.getUnu(threshold)
             if len(stock_names) == 0:
+                print('********************************************************')
                 print('No unusual options for now, will check 30 seconds later.')
+                print('********************************************************')
             else:
+                prices = steve_rc.see_a_stock(stock_names)
                 for i in range(len(stock_names)):
                     print('********************************************************')
                     print(stock_names[i], exps[i], strikes[i], types[i])
@@ -35,7 +44,7 @@ class main:
                     print('bid price: ', opt_info[1])
                     print('gamma: ', opt_info[2])
                     print('implied volatility: ', opt_info[3])
-                print('-----------------------------------------------------------------')
+                print('========================================================')
             time.sleep(30)
         now = datetime.now()
         steve_rc.robin_logout(now.strftime('%H:%M:%S'))
