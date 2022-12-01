@@ -1,5 +1,4 @@
 from openbb_terminal.sdk import openbb
-#test
 
 def getUnu(threshold):
     unu_df = openbb.stocks.options.unu()
