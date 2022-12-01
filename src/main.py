@@ -9,7 +9,7 @@ class main:
         pass
 
     if __name__ == '__main__':
-        threshold = 30
+        threshold = 40
         steve_rc = rc.robin_connection()
 
         now = datetime.now()
