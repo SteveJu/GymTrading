@@ -30,8 +30,8 @@ class main:
             print("Current Time =", now.strftime('%H:%M:%S'))
 
             curr_info = sim.readCurrent()
-            curr_asset = sim.getCurrAsset(curr_info)
-            print('Current Asset: ', curr_asset)
+            curr_depo = sim.getCurrAsset(curr_info)
+            print('Current Deposit: ', curr_depo)
 
             if current_min % 30 == 0:
                 stock_names, exps, strikes, types = oc.getUnu(threshold)

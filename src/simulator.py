@@ -1,6 +1,6 @@
 import collections
 
-float_list = ['Total Asset', 'Strike', 'Price per share', 'Total earning']
+float_list = ['Current Deposit', 'Strike', 'Price per share', 'Total earning']
 int_list = ['Shares']
 
 
@@ -24,7 +24,7 @@ def readCurrent():
 
 
 def getCurrAsset(portfolio):
-    return portfolio['Total Asset']
+    return portfolio['Current Deposit']
 
 
 def writeBuy(message):
