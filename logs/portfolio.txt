@@ -1,3 +1,3 @@
 ID: 0000; Current Deposit: 100000; Current Asset: None; Earning By Far: 0;
-ID: 0001; Current Deposit: 92400; Current Asset: [100 shares VFC at 0.76]; Earning By Far: -7600;
+ID: 0001; Current Deposit: 92400; Current Asset: [VFC 37.5 2024-01-19 call 100]; Earning By Far: -7600;
 ID: 0002; Current Deposit: 101000; Current Asset: None; Earning By Far: 1000;
