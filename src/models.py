@@ -19,7 +19,7 @@ def cnd(x):
 
 
 class models:
-    def __init__(self, fCall: int, S: float, X: float, T: float,
+    def __init__(self, fCall: bool, S: float, X: float, T: float,
                  r: float, v: float, lamb: float, gamma_val: float):
         self.fCall = fCall
         self.S = S
@@ -58,7 +58,8 @@ class models:
         return self.X * math.exp(-self.r * self.T) * cnd(-(d1 - vst)) - \
                self.S * math.exp((b - self.r) * self.T) * cnd(-d1)
 
-
+'''
+# For testing purpose
 S = 100.0
 X = 80.0
 T = 0.25
@@ -66,5 +67,6 @@ r = 0.08
 v = 0.25
 lamb = 1.0
 Gamma = 0.25
-m = models(1, S, X, T, r, v, lamb, Gamma)
+m = models(True, S, X, T, r, v, lamb, Gamma)
 print(m.JumpDiffusion())
+'''
