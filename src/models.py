@@ -2,11 +2,11 @@ import math
 
 
 def cnd(x):
-    a1 = +0.31938153
+    a1 = 0.31938153
     a2 = -0.356563782
-    a3 = +1.781477937
+    a3 = 1.781477937
     a4 = -1.821255978
-    a5 = +1.330274429
+    a5 = 1.330274429
     one_div_sqrt2pi = 0.39894228040143270286
     L = abs(x)
     K = 1.0 / (1.0 + (0.2316419 * L))
@@ -19,7 +19,7 @@ def cnd(x):
 
 
 class models:
-    def __init__(self, model: str, fCall: int, S: float, X: float, T: float,
+    def __init__(self, fCall: int, S: float, X: float, T: float,
                  r: float, v: float, lamb: float, gamma_val: float):
         self.fCall = fCall
         self.S = S
@@ -29,9 +29,7 @@ class models:
         self.v = v
         self.lamb = lamb
         self.gamma_val = gamma_val
-        if model == 'JumpDiffusion':
-            self.fact_lookup = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800]
-            self.JumpDiffusion()
+        self.fact_lookup = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800]
 
     def JumpDiffusion(self):
         result = 0.0
@@ -49,15 +47,24 @@ class models:
             else:
                 bs = self.gbs_put(self.r, vst, d1)
 
-            result += elT * math.pow(self.lamb * self.T, i / self.fact_lookup[i] * bs)
-
+            result += elT * math.pow(self.lamb * self.T, i) / self.fact_lookup[i] * bs
         return result
 
     def gbs_call(self, b, vst, d1):
-
         return self.S * math.exp((b - self.r) * self.T) * cnd(d1) - \
                self.X * math.exp(-self.r * self.T) * cnd(d1 - vst)
 
     def gbs_put(self, b, vst, d1):
         return self.X * math.exp(-self.r * self.T) * cnd(-(d1 - vst)) - \
                self.S * math.exp((b - self.r) * self.T) * cnd(-d1)
+
+
+S = 100.0
+X = 80.0
+T = 0.25
+r = 0.08
+v = 0.25
+lamb = 1.0
+Gamma = 0.25
+m = models(1, S, X, T, r, v, lamb, Gamma)
+print(m.JumpDiffusion())
