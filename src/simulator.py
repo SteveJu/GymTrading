@@ -102,7 +102,8 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     f.close()
 
 
-
+'''
+# Format
 writeOperations('Buy', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
 writeOperations('Sell', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
 writeOperations('Buy', 'AAPL', 45.4, '2023-01-01', 'call', 200, 98.5)
@@ -111,4 +112,4 @@ writeOperations('Sell', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
 writeOperations('Buy', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
 writeOperations('Buy', 'TSL', 45.4, '2023-01-01', 'call', 200, 98.5)
 writeOperations('Sell', 'TSL', 45.4, '2023-01-01', 'call', 100, 98.5)
-
+'''
