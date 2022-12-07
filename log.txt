@@ -1,0 +1,11 @@
+Total Asset: 100000;
+Total Asset: 110000;
+Total Asset: 111000;
+Total Asset: 111100;
+Total Asset: 111110;
+Total Asset: 111111;
+Total Asset: 120000;
+Total Asset: 122000;
+Total Asset: 122200;
+Total Asset: 122220;
+Total Asset: 122222;Operation: Buy;
