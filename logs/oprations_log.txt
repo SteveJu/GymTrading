@@ -1,0 +1,2 @@
+id: 0001; Operation: Buy; Time: 2022-12-26 23:44:00; Stock Name: VFC; Strike: 37.5; Expiration Date: 2024-01-19; Type: call; Shares: 100; Price per share: 0.76; Total earning: -76;
+id: 0002; Operation: Sell; Time: 2022-12-26 23:54:00; Stock Name: VFC; Strike: 37.5; Expiration Date: 2024-01-19; Type: call; Shares: 100; Price per share: 0.86; Total earning: 86;

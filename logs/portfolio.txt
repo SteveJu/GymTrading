@@ -1,0 +1,3 @@
+id: 0000; Total Asset: 100000; Asset: None;
+id: 0001; Total Asset: 99924; Asset: [100 share VFC at 0.76];
+id: 0002; Total Asset: 100010; Asset: None;
