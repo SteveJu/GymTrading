@@ -75,9 +75,9 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
                     temp_asset[4])
 
         if opera == 'Buy':
-            try:
+            if asset_item in asset_info:
                 asset_info[asset_item] += shares
-            except:
+            else:
                 asset_info[asset_item] = shares
         elif opera == 'Sell':
             asset_info[asset_item] -= shares
@@ -102,8 +102,7 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     f.close()
 
 
-'''
-# Format
+
 writeOperations('Buy', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
 writeOperations('Sell', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
 writeOperations('Buy', 'AAPL', 45.4, '2023-01-01', 'call', 200, 98.5)
@@ -112,4 +111,4 @@ writeOperations('Sell', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
 writeOperations('Buy', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
 writeOperations('Buy', 'TSL', 45.4, '2023-01-01', 'call', 200, 98.5)
 writeOperations('Sell', 'TSL', 45.4, '2023-01-01', 'call', 100, 98.5)
-'''
+
