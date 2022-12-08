@@ -1,4 +1,5 @@
 import datetime
+import re
 
 
 class time_system:
@@ -31,3 +32,18 @@ class time_system:
         self.now = datetime.datetime.now()
         current_time = int(self.now.strftime('%M'))
         return current_time
+
+    def getTimeToExp(self, time):
+        self.now = datetime.datetime.now()
+        time_list = re.split('-|T|:|\+', time)
+        time_list = time_list[:-2]
+        for t in range(len(time_list)):
+            time_list[t] = int(time_list[t])
+        exp = datetime.datetime(time_list[0], time_list[1], time_list[2], time_list[3], time_list[4], time_list[5])
+        diff = exp - self.now
+
+        return
+
+
+ti = time_system()
+ti.getTimeToExp('2022-12-31T20:00:00+00:00')
