@@ -1,5 +1,5 @@
 import collections
-import datetime
+import time_system as ts
 import re
 
 float_list = ['Current Deposit', 'Strike', 'Price per share', 'Cost', 'Earning By Far']
@@ -37,8 +37,7 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     curr_asset = curr['Current Asset']
     curr_earn = curr['Earning By Far']
 
-    today = datetime.date.today()
-    now = datetime.datetime.now()
+    time_sys = ts.time_system()
     time = today.strftime('%Y-%m-%d')
     time += ' ' + now.strftime('%H:%M:%S')
 

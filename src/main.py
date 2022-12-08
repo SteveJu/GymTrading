@@ -2,7 +2,7 @@ import robin_connection as rc
 import openbb_connection as oc
 import simulator as sim
 import time
-from datetime import datetime
+import time_system as ts
 
 
 class main:
@@ -13,10 +13,10 @@ class main:
         threshold = 20
         steve_rc = rc.robin_connection()
 
-        now = datetime.now()
-        current_hour = int(now.strftime('%H'))
+        time_sys = ts.time_system()
+        current_hour = time_sys.getHour()
 
-        steve_rc.robin_login(now.strftime('%H:%M:%S'))
+        steve_rc.robin_login(time_sys.getFullDateAndTime())
 
         try:
             stock_names, exps, strikes, types = oc.getUnu(threshold)
@@ -24,10 +24,10 @@ class main:
             stock_names, exps, strikes, types = [], [], [], []
 
         while current_hour < 24:
-            now = datetime.now()
-            current_hour = int(now.strftime('%H'))
-            current_min = int(now.strftime('%M'))
-            print("Current Time =", now.strftime('%H:%M:%S'))
+            current_hour = time_sys.getHour()
+            current_min = time_sys.getMin()
+            current_time = time_sys.getFullDateAndTime()
+            print("Current Time =", current_time)
 
             curr_info = sim.readCurrent()
             curr_depo = sim.getCurrAsset(curr_info)
@@ -53,7 +53,7 @@ class main:
                     print('Trading cost: ', round(ask_price - bid_price, 2))
                     print('gamma: ', opt_info[2])
                     print('implied volatility: ', opt_info[3])
+                    print('sellout datetime: ', opt_info[4])
                 print('==========================Section==========================')
             time.sleep(30)
-        now = datetime.now()
-        steve_rc.robin_logout(now.strftime('%H:%M:%S'))
+        steve_rc.robin_logout(time_sys.getFullDateAndTime())

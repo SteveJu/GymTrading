@@ -24,4 +24,4 @@ class robin_connection:
     def see_an_option(self, option_name, ex_date, strike, types):
         target = rh.options.find_options_by_expiration_and_strike(option_name, ex_date, strike, types)
         item = target[0]
-        return [item['ask_price'], item['bid_price'], item['gamma'], item['implied_volatility']]
+        return [item['ask_price'], item['bid_price'], item['gamma'], item['implied_volatility'], item['sellout_datetime']]
