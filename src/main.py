@@ -14,6 +14,9 @@ class main:
 
     if __name__ == '__main__':
         threshold = 40
+        profit_space = 0.3
+        interest_rate = 0.04
+        lamb = 1.0
 
         time_sys = ts.time_system()
         current_hour = time_sys.getHour()
@@ -61,10 +64,10 @@ class main:
                     ifCall = True
                     if Opr_Type == 'Put':
                         ifCall = False
-                    m = models.models(ifCall, Stock_Price, Strike, Time_To_Exp, 0.04, Implied_Volatility, 1.0, Gamma)
+                    m = models.models(ifCall, Stock_Price, Strike, Time_To_Exp, interest_rate, Implied_Volatility, lamb, Gamma)
                     Cal_Price = m.JumpDiffusion()
                     ps.printUnu(i, Stock_Name, Expiration_Date, Strike, Opr_Type, Stock_Price, Ask_Price, Bid_Price,
                                 Trading_Cost, Cal_Price)
-                    am.ifBuy(Stock_Name, Expiration_Date, Strike, Opr_Type, Ask_Price, Trading_Cost, Cal_Price, 0.3)
+                    am.ifBuy(Stock_Name, Expiration_Date, Strike, Opr_Type, Ask_Price, Trading_Cost, Cal_Price, profit_space)
             time.sleep(30)
         rc.robin_logout(time_sys.getFullDateAndTime())
