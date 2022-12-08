@@ -1,8 +1,8 @@
 import robin_connection as rc
 import openbb_connection as oc
 import simulator as sim
-import time
 import time_system as ts
+import time
 
 
 class main:
