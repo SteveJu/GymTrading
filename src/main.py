@@ -3,6 +3,7 @@ import openbb_connection as oc
 import simulator as sim
 import time_system as ts
 import models as models
+import printing_system as ps
 import time
 
 
@@ -11,7 +12,7 @@ class main:
         pass
 
     if __name__ == '__main__':
-        threshold = 40
+        threshold = 20
 
         time_sys = ts.time_system()
         current_hour = time_sys.getHour()
@@ -19,24 +20,22 @@ class main:
         steve_rc = rc.robin_connection()
         steve_rc.robin_login(time_sys.getFullDateAndTime())
 
-        stock_names, exps, strikes, types = oc.getUnu(threshold)
+        stock_names, exps, strikes, types = [], [], [], []
 
         while current_hour < 24:
             current_hour = time_sys.getHour()
             current_min = time_sys.getMin()
             current_time = time_sys.getFullDateAndTime()
-            print("Current Time =", current_time)
+            ps.printCurrTime(current_time)
 
             curr_info = sim.readCurrent()
             curr_depo = sim.getCurrAsset(curr_info)
-            print('Current Deposit: ', curr_depo)
+            ps.printCurrDepo(curr_depo)
 
-            if current_min % 30 == 0:
+            if current_min % 30 == 0 or len(stock_names) == 0:
                 stock_names, exps, strikes, types = oc.getUnu(threshold)
             if len(stock_names) == 0:
-                print('*********************************************************')
-                print('No unusual options for now, will check 30 minutes later.')
-                print('*********************************************************')
+                ps.printEmpty()
                 time.sleep(1770)
             else:
                 prices = rc.see_a_stock(stock_names)
@@ -58,16 +57,8 @@ class main:
                         ifCall = False
                     m = models.models(ifCall, Stock_Price, Strike, Time_To_Exp, 0.04, Implied_Volatility, 1.0, Gamma)
                     Cal_Price = m.JumpDiffusion()
-                    print('**************************************************No.', i + 1, '***')
-                    print('STOCK NAME: ', Stock_Name)
-                    print('EXPIRATION DATE: ', Expiration_Date)
-                    print('STRIKE: ', Strike)
-                    print('OPERATION TYPE: ', Opr_Type)
-                    print('STOCK PRICE: ', Stock_Price)
-                    print('ASK PRICE: ', Ask_Price)
-                    print('BID PRICE: ', Bid_Price)
-                    print('TRADING COST: ', Trading_Cost)
-                    print('CALCULATED PRICE: ', Cal_Price)
-                print('==========================Section==========================')
+                    ps.printUnu(i, Stock_Name, Expiration_Date, Strike, Opr_Type, Stock_Price, Ask_Price, Bid_Price,
+                                Trading_Cost, Cal_Price)
+                ps.printSection()
             time.sleep(30)
         rc.robin_logout(time_sys.getFullDateAndTime())
