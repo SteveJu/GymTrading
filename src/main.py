@@ -13,7 +13,7 @@ class main:
         pass
 
     if __name__ == '__main__':
-        threshold = 10
+        threshold = 40
         profit_space = 0.3
         interest_rate = 0.04
         lamb = 1.0
