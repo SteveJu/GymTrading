@@ -44,5 +44,6 @@ def printAssets(assets):
             print('STRIKE: ', asset_list[1])
             print('EXPIRATION DATE: ', asset_list[2])
             print('OPERATION TYPE: ', asset_list[3])
-            print('SHARES HOLD: ', asset_list[4])
+            print('BOUGHT AT: ', asset_list[4])
+            print('SHARES HOLD: ', asset_list[5])
             print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^No.', i + 1, '^^^')

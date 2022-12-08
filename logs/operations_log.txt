@@ -1,1 +1,6 @@
 ID: 0000; Operation: None; Time: YYYY-MM-DD HH:MM:SS; Stock Name: XXX; Strike: 00.00; Expiration Date: YYYY-MM-DD; Type: None; Shares: 000; Price per share: 00.00; Cost: 00.00;
+ID: 0001; Operation: Buy; Time: 2022-12-07 23:12:18; Stock Name: AAPL; Strike: 132; Expiration Date: 2023-01-06; Type: call; Shares: 100; Price Per Share: 11.9; Cost: 119000.0; 
+ID: 0002; Operation: Sell; Time: 2022-12-07 23:12:18; Stock Name: AAPL; Strike: 132; Expiration Date: 2023-01-06; Type: call; Shares: 100; Price Per Share: 11.9; Cost: -119000.0; 
+ID: 0003; Operation: Buy; Time: 2022-12-07 23:12:18; Stock Name: AAPL; Strike: 160; Expiration Date: 2023-01-13; Type: put; Shares: 100; Price Per Share: 15.4; Cost: 154000.0; 
+ID: 0004; Operation: Sell; Time: 2022-12-07 23:12:18; Stock Name: AAPL; Strike: 160; Expiration Date: 2023-01-13; Type: put; Shares: 100; Price Per Share: 15.4; Cost: -154000.0; 
+ID: 0005; Operation: Buy; Time: 2022-12-07 23:12:18; Stock Name: TSLA; Strike: 255; Expiration Date: 2022-12-30; Type: call; Shares: 100; Price Per Share: 0.19; Cost: 1900.0; 

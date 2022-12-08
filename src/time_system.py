@@ -33,7 +33,7 @@ class time_system:
         current_time = int(self.now.strftime('%M'))
         return current_time
 
-    def getTimeToExp(self, time):
+    def getTimeToExp(self, time: str):
         self.now = datetime.datetime.now()
         time_list = re.split('-|T|:|\+', time)
         time_list = time_list[:-2]

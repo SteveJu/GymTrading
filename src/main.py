@@ -33,8 +33,9 @@ class main:
             curr_depo = sim.getCurrDepo(curr_info)
             ps.printCurrDepo(curr_depo)
 
-            asset = sim.getCurrAsset(curr_info)
-            ps.printAssets(asset)
+            assets = sim.getCurrAsset(curr_info)
+            ps.printAssets(assets)
+            am.ifSell(assets)
 
             if current_min % 30 == 0 or len(stock_names) == 0:
                 stock_names, exps, strikes, types = oc.getUnu(threshold)
@@ -64,6 +65,6 @@ class main:
                     Cal_Price = m.JumpDiffusion()
                     ps.printUnu(i, Stock_Name, Expiration_Date, Strike, Opr_Type, Stock_Price, Ask_Price, Bid_Price,
                                 Trading_Cost, Cal_Price)
-
+                    am.ifBuy(Stock_Name, Expiration_Date, Strike, Opr_Type, Ask_Price, Trading_Cost, Cal_Price, 0.2)
             time.sleep(30)
         rc.robin_logout(time_sys.getFullDateAndTime())

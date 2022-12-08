@@ -65,7 +65,7 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     portfolio_message += 'ID: ' + f"{new_id:04}" + '; '
     portfolio_message += 'Current Deposit: ' + str(curr_depo - cost) + '; '
     portfolio_message += 'Current Asset: '
-    asset_item = stock_name + ' ' + str(strike) + ' ' + exp_date + ' ' + opt_type
+    asset_item = stock_name + ' ' + str(strike) + ' ' + exp_date + ' ' + opt_type + ' ' + str(pps)
     if curr_asset == 'None':
         portfolio_message += '[' + asset_item + ' ' + str(shares) + ']'
     else:
@@ -74,8 +74,8 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
         for asset in assets:
             if len(asset) > 0:
                 temp_asset = re.split(' ', asset)
-                asset_info[temp_asset[0] + ' ' + temp_asset[1] + ' ' + temp_asset[2] + ' ' + temp_asset[3]] = int(
-                    temp_asset[4])
+                asset_info[temp_asset[0] + ' ' + temp_asset[1] + ' ' + temp_asset[2] + ' ' + temp_asset[3] +
+                           ' ' + temp_asset[4]] = int(temp_asset[5])
 
         if opera == 'Buy':
             if asset_item in asset_info:
@@ -105,15 +105,10 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     f.close()
 
 
-'''
 # Format
-writeOperations('Buy', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
-writeOperations('Sell', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
-writeOperations('Buy', 'AAPL', 45.4, '2023-01-01', 'call', 200, 98.5)
-writeOperations('Sell', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
-writeOperations('Sell', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
-writeOperations('Buy', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
-writeOperations('Buy', 'TSL', 45.4, '2023-01-01', 'call', 200, 98.5)
-writeOperations('Sell', 'TSL', 45.4, '2023-01-01', 'call', 100, 98.5)
+writeOperations('Buy', 'AAPL', 132, '2023-01-06', 'call', 100, 11.90)
+writeOperations('Sell', 'AAPL', 132, '2023-01-06', 'call', 100, 11.90)
+writeOperations('Buy', 'AAPL', 160, '2023-01-13', 'put', 100, 15.4)
+writeOperations('Sell', 'AAPL', 160, '2023-01-13', 'put', 100, 15.4)
+writeOperations('Buy', 'TSLA', 255, '2022-12-30', 'call', 100, 0.19)
 # print(getCurrAsset(readCurrent()))
-'''
