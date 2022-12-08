@@ -42,9 +42,13 @@ class main:
 
             if current_min % 30 == 0 or len(stock_names) == 0:
                 stock_names, exps, strikes, types = oc.getUnu(threshold)
-            if len(stock_names) == 0:
+            if len(stock_names) == 0 and assets == ['None']:
                 ps.printEmpty()
                 time.sleep(1770)
+            elif len(stock_names) == 0:
+                ps.printAssets(assets)
+                am.ifSell(assets)
+                ps.printEmpty()
             else:
                 ps.printSection()
                 prices = rc.see_a_stock(stock_names)
