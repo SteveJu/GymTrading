@@ -44,7 +44,7 @@ class main:
                 stock_names, exps, strikes, types = oc.getUnu(threshold)
             if len(stock_names) == 0 and assets == ['None']:
                 ps.printEmpty()
-                time.sleep(1770)
+                time.sleep(1766)
             elif len(stock_names) == 0:
                 ps.printAssets(assets)
                 am.ifSell(assets)
