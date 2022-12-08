@@ -48,6 +48,7 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     cost = shares * pps * 100
     if opera == 'Sell':
         cost *= -1
+    cost = round(cost, 2)
 
     operation_message = '\n'
     operation_message += 'ID: ' + f"{new_id:04}" + '; '
@@ -105,6 +106,7 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     f.close()
 
 
+'''
 # Format
 writeOperations('Buy', 'AAPL', 132, '2023-01-06', 'call', 100, 11.90)
 writeOperations('Sell', 'AAPL', 132, '2023-01-06', 'call', 100, 11.90)
@@ -112,3 +114,4 @@ writeOperations('Buy', 'AAPL', 160, '2023-01-13', 'put', 100, 15.4)
 writeOperations('Sell', 'AAPL', 160, '2023-01-13', 'put', 100, 15.4)
 writeOperations('Buy', 'TSLA', 255, '2022-12-30', 'call', 100, 0.19)
 # print(getCurrAsset(readCurrent()))
+'''

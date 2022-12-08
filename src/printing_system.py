@@ -6,11 +6,11 @@ def printSection():
 
 
 def printCurrTime(current_time):
-    print("Current Time =", current_time)
+    print("Current Time = ", current_time)
 
 
 def printCurrDepo(curr_depo):
-    print("Current Time =", curr_depo)
+    print("Current Deposit = ", curr_depo)
 
 
 def printEmpty():

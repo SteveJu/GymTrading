@@ -65,6 +65,6 @@ class main:
                     Cal_Price = m.JumpDiffusion()
                     ps.printUnu(i, Stock_Name, Expiration_Date, Strike, Opr_Type, Stock_Price, Ask_Price, Bid_Price,
                                 Trading_Cost, Cal_Price)
-                    am.ifBuy(Stock_Name, Expiration_Date, Strike, Opr_Type, Ask_Price, Trading_Cost, Cal_Price, 0.2)
+                    am.ifBuy(Stock_Name, Expiration_Date, Strike, Opr_Type, Ask_Price, Trading_Cost, Cal_Price, 0.5)
             time.sleep(30)
         rc.robin_logout(time_sys.getFullDateAndTime())
