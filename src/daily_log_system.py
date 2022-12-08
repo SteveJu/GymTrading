@@ -10,8 +10,7 @@ class daily_log_system:
         self.f = open(self.file_name, 'a')
 
     def log(self, message):
-        self.f.write(message)
-        self.f.write('\n')
+        self.f.write(message + '\n')
 
     def close_file(self):
         self.f.close()

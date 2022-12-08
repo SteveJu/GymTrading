@@ -66,7 +66,6 @@ class print_system:
                 message += 'SHARES HOLD: ' + str(asset_list[5])
                 message += '\n'
                 message += '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^No.' + str(i + 1) + '^^^'
-                message += '\n'
                 print(message)
                 self.dls.log(message)
         self.dls.close_file()
