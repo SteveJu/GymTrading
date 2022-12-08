@@ -38,8 +38,7 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     curr_earn = curr['Earning By Far']
 
     time_sys = ts.time_system()
-    time = today.strftime('%Y-%m-%d')
-    time += ' ' + now.strftime('%H:%M:%S')
+    time = time_sys.getFullDateAndTime()
 
     cost = shares * pps * 100
     if opera == 'Sell':
