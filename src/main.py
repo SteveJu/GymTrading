@@ -11,7 +11,7 @@ class main:
         pass
 
     if __name__ == '__main__':
-        threshold = 20
+        threshold = 40
 
         time_sys = ts.time_system()
         current_hour = time_sys.getHour()
@@ -19,10 +19,7 @@ class main:
         steve_rc = rc.robin_connection()
         steve_rc.robin_login(time_sys.getFullDateAndTime())
 
-        try:
-            stock_names, exps, strikes, types = oc.getUnu(threshold)
-        except:
-            stock_names, exps, strikes, types = [], [], [], []
+        stock_names, exps, strikes, types = oc.getUnu(threshold)
 
         while current_hour < 24:
             current_hour = time_sys.getHour()
@@ -38,8 +35,9 @@ class main:
                 stock_names, exps, strikes, types = oc.getUnu(threshold)
             if len(stock_names) == 0:
                 print('*********************************************************')
-                print('No unusual options for now, will check 30 seconds later.')
+                print('No unusual options for now, will check 30 minutes later.')
                 print('*********************************************************')
+                time.sleep(1770)
             else:
                 prices = rc.see_a_stock(stock_names)
                 for i in range(len(stock_names)):
