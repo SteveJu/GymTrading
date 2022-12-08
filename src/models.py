@@ -19,14 +19,14 @@ def cnd(x):
 
 
 class models:
-    def __init__(self, fCall: bool, S: float, X: float, T: float,
+    def __init__(self, ifCall: bool, S: float, X: float, T: float,
                  r: float, v: float, lamb: float, gamma_val: float):
-        self.fCall = fCall
-        self.S = S
-        self.X = X
-        self.T = T
-        self.r = r
-        self.v = v
+        self.ifCall = ifCall
+        self.S = S  # Stock price
+        self.X = X  # Strike
+        self.T = T  # Time to Expiration
+        self.r = r  # Interest_Rate
+        self.v = v  # Volatility
         self.lamb = lamb
         self.gamma_val = gamma_val
         self.fact_lookup = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800]
@@ -42,13 +42,14 @@ class models:
             vi = math.sqrt(p2Z + p2delta * (i / self.T))
             vst = vi * math.sqrt(self.T)
             d1 = (math.log(self.S / self.X) + (self.r + math.pow(vi, 2) / 2) * self.T) / vst
-            if self.fCall:
+            # b is Cost of Carry
+            if self.ifCall:
                 bs = self.gbs_call(self.r, vst, d1)
             else:
                 bs = self.gbs_put(self.r, vst, d1)
 
             result += elT * math.pow(self.lamb * self.T, i) / self.fact_lookup[i] * bs
-        return result
+        return round(result, 2)
 
     def gbs_call(self, b, vst, d1):
         return self.S * math.exp((b - self.r) * self.T) * cnd(d1) - \
@@ -58,15 +59,16 @@ class models:
         return self.X * math.exp(-self.r * self.T) * cnd(-(d1 - vst)) - \
                self.S * math.exp((b - self.r) * self.T) * cnd(-d1)
 
+
 '''
 # For testing purpose
-S = 100.0
-X = 80.0
-T = 0.25
-r = 0.08
-v = 0.25
+S = 88.52
+X = 74
+T = 0.04382506
+r = 0.04
+v = 0.56948000
 lamb = 1.0
-Gamma = 0.25
+Gamma = 0.01095400
 m = models(True, S, X, T, r, v, lamb, Gamma)
 print(m.JumpDiffusion())
 '''
