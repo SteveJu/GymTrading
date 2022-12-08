@@ -14,9 +14,9 @@ def printCurrDepo(curr_depo):
 
 
 def printEmpty():
-    print('*********************************************************')
+    print('***********************************************************')
     print('No unusual options for now, will check 30 minutes later.')
-    print('*********************************************************')
+    print('***********************************************************')
 
 
 def printUnu(i, Stock_Name, Expiration_Date, Strike, Opr_Type, Stock_Price, Ask_Price, Bid_Price, Trading_Cost,
