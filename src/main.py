@@ -2,6 +2,7 @@ import robin_connection as rc
 import openbb_connection as oc
 import simulator as sim
 import time_system as ts
+import models as models
 import time
 
 
@@ -42,18 +43,33 @@ class main:
             else:
                 prices = steve_rc.see_a_stock(stock_names)
                 for i in range(len(stock_names)):
-                    print('**************************************************No.', i+1, '***')
+                    Stock_Price = round(float(prices[i]), 2)
+                    Stock_Name = stock_names[i]
+                    Expiration_Date = exps[i]
+                    Strike = strikes[i]
+                    Opt_Type = types[i]
+                    Opt_Info = steve_rc.see_an_option(stock_names[i], exps[i], strikes[i], types[i])
+                    Ask_Price = round(float(Opt_Info[0]), 2)
+                    Bid_Price = round(float(Opt_Info[1]), 2)
+                    Trading_Cost = round(Ask_Price - Bid_Price, 2)
+                    Gamma = float(Opt_Info[2])
+                    Implied_Volatility = float(Opt_Info[3])
+                    Time_To_Exp = time_sys.getTimeToExp(Opt_Info[4])
+                    ifCall = True
+                    if types[i] == 'Put':
+                        ifCall = False
+                    m = models.models(ifCall, Stock_Price, Strike, Time_To_Exp, 0.04, Implied_Volatility, 1.0, Gamma)
+                    Cal_Price = m.JumpDiffusion()
+                    print('**************************************************No.', i + 1, '***')
                     print(stock_names[i], exps[i], strikes[i], types[i])
-                    print('Price now: ', round(float(prices[i]), 2))
-                    opt_info = steve_rc.see_an_option(stock_names[i], exps[i], strikes[i], types[i])
-                    ask_price = round(float(opt_info[0]), 2)
-                    bid_price = round(float(opt_info[1]), 2)
-                    print('ask price: ', ask_price)
-                    print('bid price: ', bid_price)
-                    print('Trading cost: ', round(ask_price - bid_price, 2))
-                    print('gamma: ', opt_info[2])
-                    print('implied volatility: ', opt_info[3])
-                    print('sellout datetime: ', opt_info[4])
+                    print('Price now: ', Stock_Price)
+                    print('ask price: ', Ask_Price)
+                    print('bid price: ', Bid_Price)
+                    print('Trading cost: ', Trading_Cost)
+                    print('gamma: ', Gamma)
+                    print('implied volatility: ', Implied_Volatility)
+                    print('Time to EXP: ', Time_To_Exp)
+                    print('Calculated Price: ', Cal_Price)
                 print('==========================Section==========================')
             time.sleep(30)
         steve_rc.robin_logout(time_sys.getFullDateAndTime())

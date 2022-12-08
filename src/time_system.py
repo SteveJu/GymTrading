@@ -41,9 +41,5 @@ class time_system:
             time_list[t] = int(time_list[t])
         exp = datetime.datetime(time_list[0], time_list[1], time_list[2], time_list[3], time_list[4], time_list[5])
         diff = exp - self.now
-
-        return
-
-
-ti = time_system()
-ti.getTimeToExp('2022-12-31T20:00:00+00:00')
+        delta = datetime.timedelta(days=365)
+        return diff/delta
