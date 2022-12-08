@@ -4,6 +4,7 @@ import simulator as sim
 import time_system as ts
 import models as models
 import printing_system as ps
+import asset_management as am
 import time
 
 
@@ -29,8 +30,11 @@ class main:
             ps.printCurrTime(current_time)
 
             curr_info = sim.readCurrent()
-            curr_depo = sim.getCurrAsset(curr_info)
+            curr_depo = sim.getCurrDepo(curr_info)
             ps.printCurrDepo(curr_depo)
+
+            asset = sim.getCurrAsset(curr_info)
+            ps.printAssets(asset)
 
             if current_min % 30 == 0 or len(stock_names) == 0:
                 stock_names, exps, strikes, types = oc.getUnu(threshold)
@@ -38,6 +42,7 @@ class main:
                 ps.printEmpty()
                 time.sleep(1770)
             else:
+                ps.printSection()
                 prices = rc.see_a_stock(stock_names)
                 for i in range(len(stock_names)):
                     Stock_Price = round(float(prices[i]), 2)
@@ -59,6 +64,6 @@ class main:
                     Cal_Price = m.JumpDiffusion()
                     ps.printUnu(i, Stock_Name, Expiration_Date, Strike, Opr_Type, Stock_Price, Ask_Price, Bid_Price,
                                 Trading_Cost, Cal_Price)
-                ps.printSection()
+
             time.sleep(30)
         rc.robin_logout(time_sys.getFullDateAndTime())

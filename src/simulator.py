@@ -26,8 +26,13 @@ def readCurrent():
     return portfolio
 
 
-def getCurrAsset(portfolio):
+def getCurrDepo(portfolio):
     return portfolio['Current Deposit']
+
+
+def getCurrAsset(portfolio):
+    assets = list(filter(None, re.split(']|\[', portfolio['Current Asset'])))
+    return assets
 
 
 def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, opt_type: str, shares: int, pps: float):
@@ -110,4 +115,5 @@ writeOperations('Sell', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
 writeOperations('Buy', 'AAPL', 45.4, '2023-01-01', 'call', 100, 98.5)
 writeOperations('Buy', 'TSL', 45.4, '2023-01-01', 'call', 200, 98.5)
 writeOperations('Sell', 'TSL', 45.4, '2023-01-01', 'call', 100, 98.5)
+# print(getCurrAsset(readCurrent()))
 '''
