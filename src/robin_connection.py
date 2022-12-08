@@ -28,4 +28,3 @@ class robin_connection:
     def robin_login(self, time):
         rh.login(self.robinhood_username, self.robinhood_passcode, self.robinhood_OTC)
         print('Logged in at', time)
-

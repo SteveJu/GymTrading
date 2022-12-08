@@ -58,17 +58,3 @@ class models:
     def gbs_put(self, b, vst, d1):
         return self.X * math.exp(-self.r * self.T) * cnd(-(d1 - vst)) - \
                self.S * math.exp((b - self.r) * self.T) * cnd(-d1)
-
-
-'''
-# For testing purpose
-S = 88.52
-X = 74
-T = 0.04382506
-r = 0.04
-v = 0.56948000
-lamb = 1.0
-Gamma = 0.01095400
-m = models(True, S, X, T, r, v, lamb, Gamma)
-print(m.JumpDiffusion())
-'''
