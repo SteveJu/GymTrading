@@ -18,6 +18,8 @@ class main:
         interest_rate = 0.04
         lamb = 1.0
 
+        print_sys = ps.print_system()
+
         time_sys = ts.time_system()
         current_hour = time_sys.getHour()
 
@@ -29,28 +31,27 @@ class main:
         while current_hour < 24:
             current_hour = time_sys.getHour()
             current_min = time_sys.getMin()
-            current_time = time_sys.getFullDateAndTime()
-            ps.printCurrTime(current_time)
+            print_sys.printCurrTime()
 
             curr_info = sim.readCurrent()
             curr_depo = sim.getCurrDepo(curr_info)
-            ps.printCurrDepo(curr_depo)
+            print_sys.printCurrDepo(curr_depo)
 
             assets = sim.getCurrAsset(curr_info)
-            ps.printAssets(assets)
+            print_sys.printAssets(assets)
             am.ifSell(assets)
 
             if current_min % 30 == 0 or len(stock_names) == 0:
                 stock_names, exps, strikes, types = oc.getUnu(threshold)
             if len(stock_names) == 0 and assets == ['None']:
-                ps.printEmpty()
+                print_sys.printEmpty()
                 time.sleep(1766)
             elif len(stock_names) == 0:
-                ps.printAssets(assets)
+                print_sys.printAssets(assets)
                 am.ifSell(assets)
-                ps.printEmpty()
+                print_sys.printEmpty()
             else:
-                ps.printSection()
+                print_sys.printSection()
                 prices = rc.see_a_stock(stock_names)
                 for i in range(len(stock_names)):
                     Stock_Price = round(float(prices[i]), 2)
@@ -68,10 +69,13 @@ class main:
                     ifCall = True
                     if Opr_Type == 'Put':
                         ifCall = False
-                    m = models.models(ifCall, Stock_Price, Strike, Time_To_Exp, interest_rate, Implied_Volatility, lamb, Gamma)
+                    m = models.models(ifCall, Stock_Price, Strike, Time_To_Exp, interest_rate, Implied_Volatility, lamb,
+                                      Gamma)
                     Cal_Price = m.JumpDiffusion()
-                    ps.printUnu(i, Stock_Name, Expiration_Date, Strike, Opr_Type, Stock_Price, Ask_Price, Bid_Price,
-                                Trading_Cost, Cal_Price)
-                    am.ifBuy(Stock_Name, Expiration_Date, Strike, Opr_Type, Ask_Price, Trading_Cost, Cal_Price, profit_space, assets)
+                    print_sys.printUnu(i, Stock_Name, Expiration_Date, Strike, Opr_Type, Stock_Price, Ask_Price,
+                                       Bid_Price,
+                                       Trading_Cost, Cal_Price)
+                    am.ifBuy(Stock_Name, Expiration_Date, Strike, Opr_Type, Ask_Price, Trading_Cost, Cal_Price,
+                             profit_space, assets)
             time.sleep(30)
         rc.robin_logout(time_sys.getFullDateAndTime())
