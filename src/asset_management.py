@@ -22,10 +22,10 @@ def ifSell(assets):
             t = ts.time_system()
             if bought_at - curr_trade_cost > curr_bid_price or t.getTimeToExp(curr_time_to_exp) < 0.005:
                 print('SELL')
-                sim.writeOperations('Sell', stock_name, strike, exp_date, opr_type, shares_hold, bought_at)
+                sim.writeOperations('Sell', stock_name, strike, exp_date, opr_type, shares_hold, bought_at, curr_bid_price)
 
 
 def ifBuy(stock_name, exp_date, strike, opr_type, Ask_Price, Trading_Cost, Cal_Price, threshold):
     if Ask_Price - Trading_Cost - threshold >= Cal_Price:
         print('BUY')
-        sim.writeOperations('Buy', stock_name, strike, exp_date, opr_type, 100, Ask_Price)
+        sim.writeOperations('Buy', stock_name, strike, exp_date, opr_type, 100, Ask_Price, None)

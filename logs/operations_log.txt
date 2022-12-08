@@ -1,1 +1,10 @@
-ID: 0000; Operation: None; Time: YYYY-MM-DD HH:MM:SS; Stock Name: XXX; Strike: 00.00; Expiration Date: YYYY-MM-DD; Type: None; Shares: 000; Price per share: 00.00; Cost: 00.00;
+ID: 0000; Operation: None; Time: YYYY-MM-DD HH:MM:SS; Stock Name: XXX; Strike: 00.00; Expiration Date: YYYY-MM-DD; Type: None; Shares: 000; Bought At: 00.00; Sell At: 00.00; Cost: 00.00;
+ID: 0001; Operation: Buy; Time: 2022-12-07 23:38:12; Stock Name: AMZN; Strike: 74.0; Expiration Date: 2022-12-23; Type: Put; Shares: 100; Bought At: 0.28; Sell At: None; Cost: 2800.0; 
+ID: 0002; Operation: Buy; Time: 2022-12-07 23:38:13; Stock Name: BAC; Strike: 49.0; Expiration Date: 2023-06-16; Type: Call; Shares: 100; Bought At: 0.12; Sell At: None; Cost: 1200.0; 
+ID: 0003; Operation: Buy; Time: 2022-12-07 23:38:13; Stock Name: XOM; Strike: 95.0; Expiration Date: 2022-12-30; Type: Put; Shares: 100; Bought At: 0.85; Sell At: None; Cost: 8500.0; 
+ID: 0004; Operation: Buy; Time: 2022-12-07 23:38:44; Stock Name: AMZN; Strike: 74.0; Expiration Date: 2022-12-23; Type: Put; Shares: 100; Bought At: 0.28; Sell At: None; Cost: 2800.0; 
+ID: 0005; Operation: Buy; Time: 2022-12-07 23:38:44; Stock Name: BAC; Strike: 49.0; Expiration Date: 2023-06-16; Type: Call; Shares: 100; Bought At: 0.12; Sell At: None; Cost: 1200.0; 
+ID: 0006; Operation: Buy; Time: 2022-12-07 23:38:45; Stock Name: XOM; Strike: 95.0; Expiration Date: 2022-12-30; Type: Put; Shares: 100; Bought At: 0.85; Sell At: None; Cost: 8500.0; 
+ID: 0007; Operation: Sell; Time: 2022-12-07 23:39:19; Stock Name: AMZN; Strike: 74.0; Expiration Date: 2022-12-23; Type: Put; Shares: 200; Bought At: 0.28; Sell At: 0.26; Cost: -5200.0; 
+ID: 0008; Operation: Sell; Time: 2022-12-07 23:39:19; Stock Name: BAC; Strike: 49.0; Expiration Date: 2023-06-16; Type: Call; Shares: 200; Bought At: 0.12; Sell At: 0.1; Cost: -2000.0; 
+ID: 0009; Operation: Sell; Time: 2022-12-07 23:39:19; Stock Name: XOM; Strike: 95.0; Expiration Date: 2022-12-30; Type: Put; Shares: 200; Bought At: 0.85; Sell At: 0.81; Cost: -16200.0; 

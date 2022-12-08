@@ -1,1 +1,10 @@
 ID: 0000; Current Deposit: 100000.0; Current Asset: None; Earning By Far: 0.0;
+ID: 0001; Current Deposit: 97200.0; Current Asset: [AMZN 74.0 2022-12-23 Put 0.28 100]; Earning By Far: -2800.0; 
+ID: 0002; Current Deposit: 96000.0; Current Asset: [AMZN 74.0 2022-12-23 Put 0.28 100][BAC 49.0 2023-06-16 Call 0.12 100]; Earning By Far: -4000.0; 
+ID: 0003; Current Deposit: 87500.0; Current Asset: [AMZN 74.0 2022-12-23 Put 0.28 100][BAC 49.0 2023-06-16 Call 0.12 100][XOM 95.0 2022-12-30 Put 0.85 100]; Earning By Far: -12500.0; 
+ID: 0004; Current Deposit: 84700.0; Current Asset: [AMZN 74.0 2022-12-23 Put 0.28 200][BAC 49.0 2023-06-16 Call 0.12 100][XOM 95.0 2022-12-30 Put 0.85 100]; Earning By Far: -15300.0; 
+ID: 0005; Current Deposit: 83500.0; Current Asset: [AMZN 74.0 2022-12-23 Put 0.28 200][BAC 49.0 2023-06-16 Call 0.12 200][XOM 95.0 2022-12-30 Put 0.85 100]; Earning By Far: -16500.0; 
+ID: 0006; Current Deposit: 75000.0; Current Asset: [AMZN 74.0 2022-12-23 Put 0.28 200][BAC 49.0 2023-06-16 Call 0.12 200][XOM 95.0 2022-12-30 Put 0.85 200]; Earning By Far: -25000.0; 
+ID: 0007; Current Deposit: 80200.0; Current Asset: [BAC 49.0 2023-06-16 Call 0.12 200][XOM 95.0 2022-12-30 Put 0.85 200]; Earning By Far: -19800.0; 
+ID: 0008; Current Deposit: 82200.0; Current Asset: [XOM 95.0 2022-12-30 Put 0.85 200]; Earning By Far: -17800.0; 
+ID: 0009; Current Deposit: 98400.0; Current Asset: None; Earning By Far: -1600.0; 

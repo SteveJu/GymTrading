@@ -2,7 +2,7 @@ import collections
 import time_system as ts
 import re
 
-float_list = ['Current Deposit', 'Strike', 'Price per share', 'Cost', 'Earning By Far']
+float_list = ['Current Deposit', 'Strike', 'Price per share', 'Cost', 'Earning By Far', 'Bought At', 'Sell At']
 int_list = ['ID', 'Shares']
 
 
@@ -35,7 +35,8 @@ def getCurrAsset(portfolio):
     return assets
 
 
-def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, opt_type: str, shares: int, pps: float):
+def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, opt_type: str, shares: int,
+                    bought_at=None, sell_at=None):
     curr = readCurrent()
     new_id = int(curr['ID']) + 1
     curr_depo = curr['Current Deposit']
@@ -45,9 +46,11 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     time_sys = ts.time_system()
     time = time_sys.getFullDateAndTime()
 
-    cost = shares * pps * 100
+    cost = 0
+    if opera == 'Buy':
+        cost = shares * bought_at * 100
     if opera == 'Sell':
-        cost *= -1
+        cost = -1 * shares * sell_at * 100
     cost = round(cost, 2)
 
     operation_message = '\n'
@@ -59,14 +62,15 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     operation_message += 'Expiration Date: ' + exp_date + '; '
     operation_message += 'Type: ' + opt_type + '; '
     operation_message += 'Shares: ' + str(shares) + '; '
-    operation_message += 'Price Per Share: ' + str(pps) + '; '
+    operation_message += 'Bought At: ' + str(bought_at) + '; '
+    operation_message += 'Sell At: ' + str(sell_at) + '; '
     operation_message += 'Cost: ' + str(cost) + '; '
 
     portfolio_message = '\n'
     portfolio_message += 'ID: ' + f"{new_id:04}" + '; '
     portfolio_message += 'Current Deposit: ' + str(curr_depo - cost) + '; '
     portfolio_message += 'Current Asset: '
-    asset_item = stock_name + ' ' + str(strike) + ' ' + exp_date + ' ' + opt_type + ' ' + str(pps)
+    asset_item = stock_name + ' ' + str(strike) + ' ' + exp_date + ' ' + opt_type + ' ' + str(bought_at)
     if curr_asset == 'None':
         portfolio_message += '[' + asset_item + ' ' + str(shares) + ']'
     else:
