@@ -1,5 +1,7 @@
-import collections
 import time_system as ts
+import telegram_connection as tc
+
+import collections
 import re
 
 float_list = ['Current Deposit', 'Strike', 'Price per share', 'Cost', 'Earning By Far', 'Bought At', 'Sell At']
@@ -108,3 +110,8 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     with open('logs/portfolio.txt', 'a') as f:
         f.write(portfolio_message)
     f.close()
+
+    # Send notifications to telegram
+    tele_connect = tc.telegram_connection()
+    tele_connect.sendTeleMessageToAll(operation_message)
+    tele_connect.sendTeleMessageToAll(portfolio_message)
