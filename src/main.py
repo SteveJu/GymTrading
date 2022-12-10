@@ -2,7 +2,7 @@ import robin_connection as rc
 import openbb_connection as oc
 import simulator as sim
 import time_system as ts
-import models as models
+import models as ms
 import printing_system as ps
 import asset_management as am
 import time
@@ -19,11 +19,10 @@ class main:
         lamb = 1.0
 
         print_sys = ps.print_system()
-
         time_sys = ts.time_system()
-        current_hour = time_sys.getHour()
-
         steve_rc = rc.robin_connection()
+
+        current_hour = time_sys.getHour()
         steve_rc.robin_login(time_sys.getFullDateAndTime())
 
         stock_names, exps, strikes, types = [], [], [], []
@@ -69,8 +68,8 @@ class main:
                     ifCall = True
                     if Opr_Type == 'Put':
                         ifCall = False
-                    m = models.models(ifCall, Stock_Price, Strike, Time_To_Exp, interest_rate, Implied_Volatility, lamb,
-                                      Gamma)
+                    m = ms.models(ifCall, Stock_Price, Strike, Time_To_Exp, interest_rate, Implied_Volatility, lamb,
+                                  Gamma)
                     Cal_Price = m.JumpDiffusion()
                     print_sys.printUnu(i, Stock_Name, Expiration_Date, Strike, Opr_Type, Stock_Price, Ask_Price,
                                        Bid_Price,
