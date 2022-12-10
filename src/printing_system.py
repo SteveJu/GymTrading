@@ -17,7 +17,7 @@ class print_system:
         self.dls.close_file()
 
     def printSection(self):
-        message = '========================Observation========================'
+        message = '=======================Observation========================='
         print(message)
         self.dls.open_file()
         self.dls.log(message)
