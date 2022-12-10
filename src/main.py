@@ -13,20 +13,23 @@ class main:
         pass
 
     if __name__ == '__main__':
+        # Set parameters manually
         threshold = 40
         profit_space = 0.3
         interest_rate = 0.04
         lamb = 1.0
 
+        # Open classes
         print_sys = ps.print_system()
         time_sys = ts.time_system()
         steve_rc = rc.robin_connection()
 
+        # Login and initialize
         current_hour = time_sys.getHour()
         steve_rc.robin_login(time_sys.getFullDateAndTime())
-
         stock_names, exps, strikes, types = [], [], [], []
 
+        # Main loop
         while current_hour < 24:
             current_hour = time_sys.getHour()
             current_min = time_sys.getMin()
@@ -59,6 +62,9 @@ class main:
                     Strike = strikes[i]
                     Opr_Type = types[i]
                     Opt_Info = rc.see_an_option(stock_names[i], exps[i], strikes[i], types[i])
+                    if Opt_Info is None:
+                        print_sys.printEmpty()
+                        continue
                     Ask_Price = round(float(Opt_Info[0]), 2)
                     Bid_Price = round(float(Opt_Info[1]), 2)
                     Trading_Cost = round(Ask_Price - Bid_Price, 2)
