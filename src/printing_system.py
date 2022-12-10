@@ -1,6 +1,7 @@
-import re
 import time_system as ts
 import daily_log_system as dls
+
+import re
 
 
 class print_system:
