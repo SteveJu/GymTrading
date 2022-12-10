@@ -1,1 +1,1 @@
-# JuTrading
+# GymTrading
