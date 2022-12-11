@@ -1,1 +1,1 @@
-ID: 0000; Current Deposit: 100000.0; Current Asset: None; Earning By Far: 0.0;
+ID: 0000; Current Deposit: 1000000.0; Current Asset: None; Earning By Far: 0.0;

@@ -16,7 +16,7 @@ class main:
     if __name__ == '__main__':
         # Set parameters manually
         threshold = 20
-        profit_space = 0.3
+        profit_space = -10.3
         interest_rate = 0.04
         lamb = 1.0
 

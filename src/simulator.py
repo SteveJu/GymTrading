@@ -112,6 +112,22 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     f.close()
 
     # Send notifications to telegram
+    tele_mess1 = 'Info: \n'
+    tele_mess1 += 'Stock Name: ' + stock_name + ', ' + 'Strike: ' + str(strike) + ', '
+    tele_mess1 += 'Expiration Date: ' + exp_date + ', ' + 'Type: ' + opt_type + '.\n'
+    if opera == 'Buy':
+        tele_mess1 = 'Bought ' + str(shares) + ' ' + stock_name + ' at ' + time + '.\n' + tele_mess1
+        tele_mess1 += 'Bought At: ' + str(bought_at) + '. '
+        tele_mess1 += 'Cost you $' + str(cost) + ' Dollars.'
+    elif opera == 'Sell':
+        tele_mess1 = 'Sold ' + str(shares) + ' ' + stock_name + ' at ' + time + '.\n' + tele_mess1
+        tele_mess1 += 'Sold At: ' + str(sell_at) + '. '
+        tele_mess1 += 'Make you $' + str(cost) + ' Dollars.'
+
+    tele_mess2_list = re.split('; |;', portfolio_message)
+    tele_mess2 = tele_mess2_list[1] + '\n'
+    tele_mess2 += tele_mess2_list[2] + '\n'
+    tele_mess2 += tele_mess2_list[3]
     tele_connect = tc.telegram_connection()
-    tele_connect.sendTeleMessageToAll(operation_message)
-    tele_connect.sendTeleMessageToAll(portfolio_message)
+    tele_connect.sendTeleMessageToAll(tele_mess1)
+    tele_connect.sendTeleMessageToAll(tele_mess2)
