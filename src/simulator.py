@@ -50,9 +50,9 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
 
     cost = 0
     if opera == 'Buy':
-        cost = shares * bought_at * 100
+        cost = shares * bought_at * 10
     if opera == 'Sell':
-        cost = -1 * shares * sell_at * 100
+        cost = -1 * shares * sell_at * 10
     cost = round(cost, 2)
 
     operation_message = '\n'
