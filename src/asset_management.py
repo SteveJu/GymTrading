@@ -35,4 +35,4 @@ def ifBuy(stock_name, exp_date, strike, opr_type, Ask_Price, Cal_Price, profit_s
     item_buy = ' '.join([stock_name, str(strike), exp_date, opr_type, str(Ask_Price)])
     if Ask_Price / Cal_Price <= (1 - profit_space) and item_buy not in assets_dict:
         # print('BUY')
-        sim.writeOperations('Buy', stock_name, strike, exp_date, opr_type, 100, Ask_Price, None)
+        sim.writeOperations('Buy', stock_name, strike, exp_date, opr_type, 10, Ask_Price, None)
