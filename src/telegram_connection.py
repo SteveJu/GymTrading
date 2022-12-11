@@ -14,9 +14,12 @@ print(requests.get(url).json())
 
 class telegram_connection:
     def __init__(self):
-        self.userID = 'steveju546'
-        self.chatID = {'Steve': '5498041262'}
-        self.TOKEN = '5801386853:AAGJFAtZQ-OwJyxNnhnVgp9-_47GJbS6NXY'
+        with open('hidden_files/info.txt', 'r')as f:
+            lines = f.readlines()
+        f.close()
+        self.userID = lines[0]
+        self.chatID = {lines[1]: lines[2]}
+        self.TOKEN = lines[3]
         self.bot = telegram.Bot(token=self.TOKEN)
 
     def sendTeleMessageToAll(self, message):
