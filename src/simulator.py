@@ -4,7 +4,7 @@ import telegram_connection as tc
 import collections
 import re
 
-float_list = ['Current Deposit', 'Strike', 'Price per share', 'Cost', 'Earning By Far', 'Bought At', 'Sell At']
+float_list = ['Current Cash', 'Strike', 'Price per share', 'Cost', 'Earning So Far', 'Bought At', 'Sell At']
 int_list = ['ID', 'Shares']
 
 
@@ -29,7 +29,7 @@ def readCurrent():
 
 
 def getCurrDepo(portfolio):
-    return portfolio['Current Deposit']
+    return portfolio['Current Cash']
 
 
 def getCurrAsset(portfolio):
@@ -41,9 +41,9 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
                     bought_at=None, sell_at=None):
     curr = readCurrent()
     new_id = int(curr['ID']) + 1
-    curr_depo = curr['Current Deposit']
+    curr_depo = curr['Current Cash']
     curr_asset = curr['Current Asset']
-    curr_earn = curr['Earning By Far']
+    curr_earn = curr['Earning So Far']
 
     time_sys = ts.time_system()
     time = time_sys.getFullDateAndTime()
@@ -70,7 +70,7 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
 
     portfolio_message = '\n'
     portfolio_message += 'ID: ' + f"{new_id:04}" + '; '
-    portfolio_message += 'Current Deposit: ' + str(curr_depo - cost) + '; '
+    portfolio_message += 'Current Cash: ' + str(curr_depo - cost) + '; '
     portfolio_message += 'Current Asset: '
     asset_item = stock_name + ' ' + str(strike) + ' ' + exp_date + ' ' + opt_type + ' ' + str(bought_at)
     if curr_asset == 'None':
@@ -101,7 +101,7 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
         else:
             portfolio_message += 'None'
     portfolio_message += '; '
-    portfolio_message += 'Earning By Far: ' + str(curr_earn - cost) + '; '
+    portfolio_message += 'Earning So Far: ' + str(curr_earn - cost) + '; '
 
     with open('logs/operations_log.txt', 'a') as f:
         f.write(operation_message)
@@ -116,12 +116,12 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     tele_mess1 += 'Stock Name: ' + stock_name + ', ' + 'Strike: ' + str(strike) + ', '
     tele_mess1 += 'Expiration Date: ' + exp_date + ', ' + 'Type: ' + opt_type + '.\n'
     if opera == 'Buy':
-        tele_mess1 = 'Bought ' + str(shares) + ' ' + stock_name + ' at ' + time + '.\n' + tele_mess1
-        tele_mess1 += 'Bought At: ' + str(bought_at) + '. '
+        tele_mess1 = 'Bought ' + str(shares) + ' ' + stock_name + ' at ' + time + '\n' + tele_mess1
+        tele_mess1 += 'Bought At $' + str(bought_at) + '\n'
         tele_mess1 += 'Cost you $' + str(cost) + ' Dollars.'
     elif opera == 'Sell':
         tele_mess1 = 'Sold ' + str(shares) + ' ' + stock_name + ' at ' + time + '.\n' + tele_mess1
-        tele_mess1 += 'Sold At: ' + str(sell_at) + '. '
+        tele_mess1 += 'Sold At $' + str(sell_at) + '. '
         tele_mess1 += 'Make you $' + str(cost) + ' Dollars.'
 
     tele_mess2_list = re.split('; |;', portfolio_message)

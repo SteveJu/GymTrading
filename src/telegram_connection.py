@@ -1,4 +1,5 @@
 import telegram
+import re
 
 """
 # Use below to get chat_id
@@ -18,7 +19,11 @@ class telegram_connection:
             lines = f.readlines()
         f.close()
         self.userID = lines[0]
-        self.chatID = {lines[1]: lines[2]}
+        names = re.split(' ', lines[1])
+        chat_ids = re.split(' ', lines[2])
+        self.chatID = {}
+        for n in range(len(names)):
+            self.chatID[names[n]] = chat_ids[n]
         self.TOKEN = lines[3]
         self.bot = telegram.Bot(token=self.TOKEN)
 

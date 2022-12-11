@@ -15,8 +15,8 @@ class main:
 
     if __name__ == '__main__':
         # Set parameters manually
-        threshold = 20
-        profit_space = -10.3
+        threshold = 40
+        profit_space = 0
         interest_rate = 0.04
         lamb = 1.0
 
@@ -43,6 +43,7 @@ class main:
             assets = sim.getCurrAsset(curr_info)
             print_sys.printAssets(assets)
             am.ifSell(assets)
+
             if current_min % 30 == 0 or len(stock_names) == 0:
                 stock_names, exps, strikes, types = oc.getUnu(threshold)
             if len(stock_names) == 0 and assets == ['None']:
@@ -77,9 +78,7 @@ class main:
                                   Gamma)
                     Cal_Price = m.JumpDiffusion()
                     print_sys.printUnu(i, Stock_Name, Expiration_Date, Strike, Opr_Type, Stock_Price, Ask_Price,
-                                       Bid_Price,
-                                       Trading_Cost, Cal_Price)
-                    am.ifBuy(Stock_Name, Expiration_Date, Strike, Opr_Type, Ask_Price, Trading_Cost, Cal_Price,
-                             profit_space, assets)
+                                       Bid_Price, Trading_Cost, Cal_Price)
+                    am.ifBuy(Stock_Name, Expiration_Date, Strike, Opr_Type, Ask_Price, Cal_Price, profit_space, assets)
             time.sleep(30)
         rc.robin_logout(time_sys.getFullDateAndTime())

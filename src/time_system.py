@@ -42,4 +42,4 @@ class time_system:
         exp = datetime.datetime(time_list[0], time_list[1], time_list[2], time_list[3], time_list[4], time_list[5])
         diff = exp - self.now
         delta = datetime.timedelta(days=365)
-        return diff/delta
+        return diff / delta
