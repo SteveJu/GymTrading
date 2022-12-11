@@ -11,6 +11,7 @@ class print_system:
         self.dls = dls.daily_log_system(self.current_time)
 
     def printCurrTime(self):
+        self.current_time = self.ts.getFullDateAndTime()
         message = "Current Time = " + str(self.current_time)
         print(message)
         self.dls.open_file()
