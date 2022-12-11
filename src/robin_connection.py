@@ -8,7 +8,9 @@ def robin_logout(time):
 
 
 def see_a_stock(stock_names):
-    target = rh.stocks.get_latest_price(stock_names)
+    target = []
+    for stock in stock_names:
+        target.append(rh.stocks.get_latest_price(stock)[0])
     return target
 
 
@@ -18,7 +20,7 @@ def see_an_option(option_name, ex_date, strike, types):
         item = target[0]
         return [item['ask_price'], item['bid_price'], item['gamma'], item['implied_volatility'], item['sellout_datetime']]
     else:
-        return None
+        return []
 
 
 def see_curr_prices(option_name, ex_date, strike, types):

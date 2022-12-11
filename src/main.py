@@ -15,7 +15,7 @@ class main:
 
     if __name__ == '__main__':
         # Set parameters manually
-        threshold = 40
+        threshold = 20
         profit_space = 0.3
         interest_rate = 0.04
         lamb = 1.0
@@ -43,7 +43,6 @@ class main:
             assets = sim.getCurrAsset(curr_info)
             print_sys.printAssets(assets)
             am.ifSell(assets)
-
             if current_min % 30 == 0 or len(stock_names) == 0:
                 stock_names, exps, strikes, types = oc.getUnu(threshold)
             if len(stock_names) == 0 and assets == ['None']:
@@ -57,14 +56,13 @@ class main:
                 print_sys.printSection()
                 prices = rc.see_a_stock(stock_names)
                 for i in range(len(stock_names)):
-                    Stock_Price = round(float(prices[i]), 2)
                     Stock_Name = stock_names[i]
+                    Stock_Price = round(float(prices[i]), 2)
                     Expiration_Date = exps[i]
                     Strike = strikes[i]
                     Opr_Type = types[i]
                     Opt_Info = rc.see_an_option(stock_names[i], exps[i], strikes[i], types[i])
-                    if Opt_Info is None:
-                        print_sys.printEmpty()
+                    if not Opt_Info:
                         continue
                     Ask_Price = round(float(Opt_Info[0]), 2)
                     Bid_Price = round(float(Opt_Info[1]), 2)

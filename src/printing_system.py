@@ -54,7 +54,7 @@ class print_system:
         else:
             for i in range(len(assets)):
                 asset_list = re.split(' ', assets[i])
-                message += 'STOCK NAME: ' + str(asset_list[0])
+                message = 'STOCK NAME: ' + str(asset_list[0])
                 message += '\n'
                 message += 'STRIKE: ' + str(asset_list[1])
                 message += '\n'
