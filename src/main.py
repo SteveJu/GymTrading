@@ -15,8 +15,8 @@ class main:
 
     if __name__ == '__main__':
         # Set parameters manually
-        threshold = 40
-        profit_space = 0.2
+        threshold = 10
+        profit_space = 0.3
         interest_rate = 0.04
         lamb = 1.0
 
@@ -48,7 +48,7 @@ class main:
                 stock_names, exps, strikes, types = oc.getUnu(threshold)
             if len(stock_names) == 0 and assets == ['None']:
                 print_sys.printEmpty()
-                time.sleep(1766)
+                time.sleep(1795)
             elif len(stock_names) == 0:
                 print_sys.printAssets(assets)
                 am.ifSell(assets)
@@ -79,6 +79,6 @@ class main:
                     Cal_Price = m.JumpDiffusion()
                     print_sys.printUnu(i, Stock_Name, Expiration_Date, Strike, Opr_Type, Stock_Price, Ask_Price,
                                        Bid_Price, Trading_Cost, Cal_Price)
-                    am.ifBuy(Stock_Name, Expiration_Date, Strike, Opr_Type, Ask_Price, Cal_Price, profit_space, assets)
-            time.sleep(30)
+                    am.ifBuy(Stock_Name, Expiration_Date, Strike, Opr_Type, Ask_Price, Cal_Price, profit_space, assets, Trading_Cost)
+            time.sleep(20)
         rc.robin_logout(time_sys.getFullDateAndTime())

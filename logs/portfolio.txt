@@ -1,1 +1,12 @@
-ID: 0000; Current Cash: 100000.0; Current Asset: None; Earning So Far: 0.0;
+ID: 0000; Current Cash: 100000.0; Current Asset: None; Portfolio Value: 100000.0; Overall Profit: 0.0;
+ID: 0001; Current Cash: 99850.0; Current Asset: [WFC 40.5 2022-12-16 Put 0.15 10]; Portfolio Value: 100000.0; Overall Profit: 0;
+ID: 0002; Current Cash: 100010.0; Current Asset: None; Portfolio Value: 100010.0; Overall Profit: 10.0;
+ID: 0003; Current Cash: 99850.0; Current Asset: [WFC 40.5 2022-12-16 Put 0.16 10]; Portfolio Value: 100010.0; Overall Profit: 10.0;
+ID: 0004; Current Cash: 94950.0; Current Asset: [WFC 40.5 2022-12-16 Put 0.16 10][TSLA 172.5 2022-12-16 Call 4.9 10]; Portfolio Value: 100010.0; Overall Profit: 10.0;
+ID: 0005; Current Cash: 88200.0; Current Asset: [WFC 40.5 2022-12-16 Put 0.16 10][TSLA 172.5 2022-12-16 Call 4.9 10][TSLA 172.5 2022-12-23 Call 6.75 10]; Portfolio Value: 100010.0; Overall Profit: 10.0;
+ID: 0006; Current Cash: 95000.0; Current Asset: [WFC 40.5 2022-12-16 Put 0.16 10][TSLA 172.5 2022-12-16 Call 4.9 10]; Portfolio Value: 0.0; Overall Profit: 60.0;
+ID: 0007; Current Cash: 88150.0; Current Asset: [WFC 40.5 2022-12-16 Put 0.16 10][TSLA 172.5 2022-12-16 Call 4.9 10][TSLA 172.5 2022-12-23 Call 6.85 10]; Portfolio Value: 100060.0; Overall Profit: 60.0;
+ID: 0008; Current Cash: 87970.0; Current Asset: [WFC 40.5 2022-12-16 Put 0.16 10][TSLA 172.5 2022-12-16 Call 4.9 10][TSLA 172.5 2022-12-23 Call 6.85 10][FCX 34.0 2022-12-23 Put 0.18 10]; Portfolio Value: 100060.0; Overall Profit: 60.0;
+ID: 0009; Current Cash: 87740.0; Current Asset: [WFC 40.5 2022-12-16 Put 0.16 10][TSLA 172.5 2022-12-16 Call 4.9 10][TSLA 172.5 2022-12-23 Call 6.85 10][FCX 34.0 2022-12-23 Put 0.18 10][ORCL 92.0 2022-12-16 Call 0.23 10]; Portfolio Value: 100060.0; Overall Profit: 60.0;
+ID: 0010; Current Cash: 86820.0; Current Asset: [WFC 40.5 2022-12-16 Put 0.16 10][TSLA 172.5 2022-12-16 Call 4.9 10][TSLA 172.5 2022-12-23 Call 6.85 10][FCX 34.0 2022-12-23 Put 0.18 10][ORCL 92.0 2022-12-16 Call 0.23 10][AMD 67.0 2022-12-16 Put 0.92 10]; Portfolio Value: 100060.0; Overall Profit: 60.0;
+ID: 0011; Current Cash: 84570.0; Current Asset: [WFC 40.5 2022-12-16 Put 0.16 10][TSLA 172.5 2022-12-16 Call 4.9 10][TSLA 172.5 2022-12-23 Call 6.85 10][FCX 34.0 2022-12-23 Put 0.18 10][ORCL 92.0 2022-12-16 Call 0.23 10][AMD 67.0 2022-12-16 Put 0.92 10][PYPL 76.0 2022-12-30 Call 2.25 10]; Portfolio Value: 100060.0; Overall Profit: 60.0;

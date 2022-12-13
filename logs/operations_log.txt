@@ -1,1 +1,12 @@
 ID: 0000; Operation: None; Time: YYYY-MM-DD HH:MM:SS; Stock Name: XXX; Strike: 00.00; Expiration Date: YYYY-MM-DD; Type: None; Shares: 000; Bought At: 00.00; Sell At: 00.00; Cost: 00.00;
+ID: 0001; Operation: Buy; Time: 2022-12-12 11:08:47; Stock Name: WFC; Strike: 40.5; Expiration Date: 2022-12-16; Type: Put; Shares: 10; Bought At: 0.15; Sell At: None; Cost: 150.0;
+ID: 0002; Operation: Sell; Time: 2022-12-12 12:26:24; Stock Name: WFC; Strike: 40.5; Expiration Date: 2022-12-16; Type: Put; Shares: 10; Bought At: 0.15; Sell At: 0.16; Cost: -160.0;
+ID: 0003; Operation: Buy; Time: 2022-12-12 12:51:52; Stock Name: WFC; Strike: 40.5; Expiration Date: 2022-12-16; Type: Put; Shares: 10; Bought At: 0.16; Sell At: None; Cost: 160.0;
+ID: 0004; Operation: Buy; Time: 2022-12-12 13:30:09; Stock Name: TSLA; Strike: 172.5; Expiration Date: 2022-12-16; Type: Call; Shares: 10; Bought At: 4.9; Sell At: None; Cost: 4900.0;
+ID: 0005; Operation: Buy; Time: 2022-12-12 13:32:23; Stock Name: TSLA; Strike: 172.5; Expiration Date: 2022-12-23; Type: Call; Shares: 10; Bought At: 6.75; Sell At: None; Cost: 6750.0;
+ID: 0006; Operation: Sell; Time: 2022-12-12 13:33:28; Stock Name: TSLA; Strike: 172.5; Expiration Date: 2022-12-23; Type: Call; Shares: 10; Bought At: 6.75; Sell At: 6.8; Cost: -6800.0;
+ID: 0007; Operation: Buy; Time: 2022-12-12 13:34:03; Stock Name: TSLA; Strike: 172.5; Expiration Date: 2022-12-23; Type: Call; Shares: 10; Bought At: 6.85; Sell At: None; Cost: 6850.0;
+ID: 0008; Operation: Buy; Time: 2022-12-12 14:13:04; Stock Name: FCX; Strike: 34.0; Expiration Date: 2022-12-23; Type: Put; Shares: 10; Bought At: 0.18; Sell At: None; Cost: 180.0;
+ID: 0009; Operation: Buy; Time: 2022-12-12 15:30:29; Stock Name: ORCL; Strike: 92.0; Expiration Date: 2022-12-16; Type: Call; Shares: 10; Bought At: 0.23; Sell At: None; Cost: 230.0;
+ID: 0010; Operation: Buy; Time: 2022-12-12 15:30:32; Stock Name: AMD; Strike: 67.0; Expiration Date: 2022-12-16; Type: Put; Shares: 10; Bought At: 0.92; Sell At: None; Cost: 920.0;
+ID: 0011; Operation: Buy; Time: 2022-12-12 15:50:02; Stock Name: PYPL; Strike: 76.0; Expiration Date: 2022-12-30; Type: Call; Shares: 10; Bought At: 2.25; Sell At: None; Cost: 2250.0;

@@ -25,14 +25,14 @@ def ifSell(assets):
                                     curr_bid_price)
 
 
-def ifBuy(stock_name, exp_date, strike, opr_type, Ask_Price, Cal_Price, profit_space, assets):
+def ifBuy(stock_name, exp_date, strike, opr_type, Ask_Price, Cal_Price, profit_space, assets, trading_cost):
     assets_dict = []
     if assets != ['None']:
         for asset in assets:
             asset_list = re.split(' ', asset)
-            asset_id = ' '.join(asset_list[:5])
+            asset_id = ' '.join(asset_list[:4])
             assets_dict.append(asset_id)
-    item_buy = ' '.join([stock_name, str(strike), exp_date, opr_type, str(Ask_Price)])
-    if Ask_Price / Cal_Price <= (1 - profit_space) and item_buy not in assets_dict:
+    item_buy = ' '.join([stock_name, str(strike), exp_date, opr_type])
+    if Ask_Price / (Cal_Price - trading_cost) <= (1 - profit_space) and item_buy not in assets_dict:
         # print('BUY')
         sim.writeOperations('Buy', stock_name, strike, exp_date, opr_type, 10, Ask_Price, None)

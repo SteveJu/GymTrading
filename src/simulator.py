@@ -4,7 +4,8 @@ import telegram_connection as tc
 import collections
 import re
 
-float_list = ['Current Cash', 'Strike', 'Price per share', 'Cost', 'Earning So Far', 'Bought At', 'Sell At']
+float_list = ['Current Cash', 'Strike', 'Price per share', 'Cost',
+              'Overall Profit', 'Bought At', 'Sell At', 'Portfolio Value']
 int_list = ['ID', 'Shares']
 
 
@@ -43,7 +44,8 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     new_id = int(curr['ID']) + 1
     curr_depo = curr['Current Cash']
     curr_asset = curr['Current Asset']
-    curr_earn = curr['Earning So Far']
+    curr_portfolio = curr['Portfolio Value']
+    curr_earn = curr['Overall Profit']
 
     time_sys = ts.time_system()
     time = time_sys.getFullDateAndTime()
@@ -101,7 +103,16 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
         else:
             portfolio_message += 'None'
     portfolio_message += '; '
-    portfolio_message += 'Earning So Far: ' + str(curr_earn - cost) + '; '
+    portfolio_message += 'Portfolio Value: '
+    if opera == 'Buy':
+        portfolio_message += str(curr_portfolio) + '; '
+        portfolio_message += 'Overall Profit: ' + str(curr_earn) + '; '
+    else:
+        profit = round(shares * sell_at * 100 - shares * bought_at * 100, 2)
+        portfolio_message += str(round(curr_portfolio + profit, 2)) + '; '
+        portfolio_message += 'Overall Profit: ' + \
+                             str(round(curr_earn + profit, 2)) + \
+                             '; '
 
     with open('logs/operations_log.txt', 'a') as f:
         f.write(operation_message)
@@ -122,12 +133,13 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     elif opera == 'Sell':
         tele_mess1 = 'Sold ' + str(shares) + ' ' + stock_name + ' at ' + time + '.\n' + tele_mess1
         tele_mess1 += 'Sold At $' + str(sell_at) + '. '
-        tele_mess1 += 'Make you $' + str(cost) + ' Dollars.'
+        tele_mess1 += 'Make you $' + str(-cost) + ' Dollars.'
 
     tele_mess2_list = re.split('; |;', portfolio_message)
     tele_mess2 = tele_mess2_list[1] + '\n'
     tele_mess2 += tele_mess2_list[2] + '\n'
-    tele_mess2 += tele_mess2_list[3]
+    tele_mess2 += tele_mess2_list[3] + '\n'
+    tele_mess2 += tele_mess2_list[4]
     tele_connect = tc.telegram_connection()
     tele_connect.sendTeleMessageToAll(tele_mess1)
     tele_connect.sendTeleMessageToAll(tele_mess2)
