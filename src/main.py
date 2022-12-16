@@ -15,8 +15,8 @@ class main:
 
     if __name__ == '__main__':
         # Set parameters manually
-        threshold = 10
-        profit_space = 0.3
+        threshold = 40
+        profit_space = 0.1
         interest_rate = 0.04
         lamb = 1.0
 
@@ -31,7 +31,7 @@ class main:
         stock_names, exps, strikes, types = [], [], [], []
 
         # Main loop
-        while current_hour < 24:
+        while current_hour < 16:
             current_hour = time_sys.getHour()
             current_min = time_sys.getMin()
             print_sys.printCurrTime()
@@ -80,5 +80,5 @@ class main:
                     print_sys.printUnu(i, Stock_Name, Expiration_Date, Strike, Opr_Type, Stock_Price, Ask_Price,
                                        Bid_Price, Trading_Cost, Cal_Price)
                     am.ifBuy(Stock_Name, Expiration_Date, Strike, Opr_Type, Ask_Price, Cal_Price, profit_space, assets, Trading_Cost)
-            time.sleep(20)
+            time.sleep(30)
         rc.robin_logout(time_sys.getFullDateAndTime())
