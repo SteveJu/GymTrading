@@ -133,7 +133,7 @@ def writeOperations(opera: str, stock_name: str, strike: float, exp_date: str, o
     elif opera == 'Sell':
         tele_mess1 = 'Sold ' + str(shares) + ' ' + stock_name + ' at ' + time + '.\n' + tele_mess1
         tele_mess1 += 'Sold At $' + str(sell_at) + '. '
-        tele_mess1 += 'Make you $' + str(-cost) + ' Dollars.'
+        tele_mess1 += 'Make you $' + str(-cost - (shares * bought_at * 100)) + ' Dollars.'
 
     tele_mess2_list = re.split('; |;', portfolio_message)
     tele_mess2 = tele_mess2_list[1] + '\n'
